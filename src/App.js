@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addTodo } from  './actions/todos';
 import './App.css';
 
 class App extends Component {
@@ -7,6 +8,7 @@ class App extends Component {
   state = {
     todo: ''
   }
+
 
   handleOnChange = event => {
     this.setState({
@@ -17,8 +19,7 @@ class App extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     console.log("Todo being added: ", this.state.todo);
-    this.props.dispatch({ type: 'ADD_TODO', todo: this.state.todo });
-    this.setState({ todo: '' });
+    this.props.dispatch(addTodo(this.state.todo));    this.setState({ todo: '' });
   }
 
   render() {
